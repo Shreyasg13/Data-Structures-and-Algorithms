@@ -14,32 +14,11 @@ public:
           ListNode* ans;
         if(head==nullptr||head->next==nullptr )
             return head;
-        ans=reverseList(head->next);
         
+        ans=reverseList(head->next);
         head->next->next=head;
         head->next=NULL;
+        
         return ans;
-        
-     /*   
-    ListNode*prev= new ListNode();
-	ListNode*current= new ListNode();
-	ListNode* next= new ListNode();
-	
-	current = head;
-	prev=NULL;
-	
-	
-	while(current != NULL)
-	{
-		
-	next=current->next;
-	current->next=prev;
-	prev=current;
-	current=next;
-			
-	}
-	 head=prev;
-        
-    return head;*/
     }
 };
