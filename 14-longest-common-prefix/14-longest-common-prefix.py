@@ -1,11 +1,7 @@
 class Solution:
-    # @return a string
-    def longestCommonPrefix(self, strs):
-        if not strs:
-            return ""
-            
-        for i, letter_group in enumerate(zip(*strs)):
-            if len(set(letter_group)) > 1:
-                return strs[0][:i]
-        else:
-            return min(strs)
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        common=strs[0]
+        for word in strs:
+            while(common!=word[0:len(common)]):
+                common = common[0:(len(common)-1)]
+        return common
