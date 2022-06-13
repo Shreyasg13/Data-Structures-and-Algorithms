@@ -1,23 +1,50 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         
+        res=[]
+        self.backtrack(nums,[],res)
+        return res
+    
+    def backtrack(self,nums,path,res):
+        
+        if not nums:
+            res.append(path)
+        
+        for i in range (len(nums)):
+            
+            self.backtrack(nums[:i]+nums[i+1:],path+[nums[i]],res)
+            
+
+        
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
         # visit=[False]*len(nums)  
         # ans=[]
         # element=[]
         
-        def dfs(nums,ele=[],ans=[]):
-            if not nums:
-                
-                ans.append(ele.copy())
+#         def dfs(nums,ele=[],ans=[]):
+#             if not nums:
+#                 print("check")
+#                 ans.append(ele[::])
                
-            for i in range(len(nums)):
-                rem=nums[:i]+nums[i+1:]
-                ele.append(nums[i])
-                dfs(rem,ele,ans)
-                ele.pop()
-            return ans
+#             for i in range(len(nums)):          
+#                 ele.append(nums[i])
+#                 dfs(nums[:i]+nums[i+1:],ele,ans)
+#                 print(ans)
+#                 print("pop")
+#                 ele.pop()
+#             return ans
                     
-        return dfs(nums)
+#         return dfs(nums)
+
         
          
             
@@ -25,17 +52,3 @@ class Solution:
             
             
             
-#             def permute(self, nums):
-# 	# helper
-# 	def recursive(nums, perm=[], res=[]):
-# 		if not nums: # -- NOTE [1] 
-# 			res.append(perm[::]) #  -- NOTE [2] - append a copy of the perm at the leaf before we start popping/backtracking
-
-# 		for i in range(len(nums)): # [1,2,3]
-# 			newNums = nums[:i] + nums[i+1:]
-# 			perm.append(nums[i])
-# 			recursive(newNums, perm, res) # - recursive call will make sure I reach the leaf
-# 			perm.pop() # -- NOTE [3] 
-# 		return res
-
-# return recursive(nums)
