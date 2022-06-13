@@ -4,10 +4,12 @@ class Solution:
         
         while l < r :
             
-            while not self.alphaNumeric(s[l]) and l < r:
+            if not self.alphaNumeric(s[l]):
                 l+=1
-            while not self.alphaNumeric(s[r]) and l < r:
+                continue
+            if not self.alphaNumeric(s[r]):
                 r-=1
+                continue
             if s[l].lower() != s[r].lower():
                 return False
             l,r=l+1,r-1
