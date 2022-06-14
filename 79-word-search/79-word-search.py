@@ -23,22 +23,32 @@
 #         return res
     
     
-class Solution:
-    def exist(self, board: List[List[str]], word: str) -> bool:
-        
-        def dfs(row, column, index):
-            if index == len(word): return True
-            path.add((row, column))
-            for r, c in [(row-1, column), (row, column-1), (row, column+1), (row+1, column)]:
-                if r in range(M) and c in range(N) and board[r][c] == word[index] and (r, c) not in path:
-                    if dfs(r, c, index+1): return True
-            path.remove((row, column))
-        
-        M, N = len(board), len(board[0])
-        path = set()
-        for row in range(M):
-            for column in range(N):
-                if board[row][column] == word[0]:
-                    if dfs(row, column, 1): return True
+def dfs(board, word, r, c, visited):
+    if not word:
+        return True
+
+    if (
+        (r, c) in visited
+        or r < 0
+        or r >= len(board)
+        or c < 0
+        or c >= len(board[0])
+        or board[r][c] != word[0]
+    ):
         return False
-    
+
+    return (
+        dfs(board, word[1:], r + 1, c, visited + [(r, c)])
+        or dfs(board, word[1:], r - 1, c, visited + [(r, c)])
+        or dfs(board, word[1:], r, c + 1, visited + [(r, c)])
+        or dfs(board, word[1:], r, c - 1, visited + [(r, c)])
+    )
+
+
+class Solution:
+    def exist(self, board, word):
+        for r, row in enumerate(board):
+            for c, l in enumerate(row):
+                if dfs(board, word, r, c, []):
+                    return True
+        return False
