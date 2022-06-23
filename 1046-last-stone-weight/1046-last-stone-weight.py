@@ -6,7 +6,6 @@ class Solution:
         while len(stones) > 1:
             first=heapq.heappop(stones)
             second=heapq.heappop(stones)
-            print(first,second)
             
             if first<second:
                 heapq.heappush(stones,first-second)
