@@ -13,48 +13,24 @@ class Twitter:
         self.post -=1
         
 
-    def getNewsFeed(self, userId: int) -> List[int]:
-        
-        res=[]
-        Heap=[]
+    def getNewsFeed(self, userId: int) -> List[int]:          
+        res = []
+        minHeap = [] 
         
         self.followMap[userId].add(userId)
         for followeeId in self.followMap[userId]:
             if followeeId in self.tweets:
-                index=len(self.tweets[followeeId])-1
-                postNo,tweetId=self.tweets[followeeId][index]           
-                heapq.heappush(Heap,[postNo,tweetId,followeeId,index-1])
-        
-        while len(res) < 10 and Heap:
-            postNo,tweetId,followeeId,index= heapq.heappop(Heap)
-            res.append(tweetId)
-            
-            if index >= 0:
-                postNo,tweetId=self.tweets[followeeId][index]
-                heapq.heappush(Heap,[postNo,tweetId,followeeId,index-1])
-        return res
-            
-            
-#         res = []
-#         minHeap = [] 
-        
-#         self.followMap[userId].add(userId)
-#         for followeeId in self.followMap[userId]:
-#             if followeeId in self.tweets:
-#                 index = len(self.tweets[followeeId]) - 1
-#                 post, tweetId = self.tweets[followeeId][index]
-#                 heapq.heappush(minHeap, [post, tweetId, followeeId, index - 1])
+                index = len(self.tweets[followeeId]) - 1
+                post, tweetId = self.tweets[followeeId][index]
+                heapq.heappush(minHeap, [post, tweetId, followeeId, index - 1])
 
-#         while minHeap and len(res) < 10:
-#             post, tweetId, followeeId, index = heapq.heappop(minHeap)
-#             res.append(tweetId)
-#             if index >= 0:
-#                 post, tweetId = self.tweetMap[followeeId][index]
-#                 heapq.heappush(minHeap, [post, tweetId, followeeId, index - 1])
-#         return res
-     
-            
-        
+        while minHeap and len(res) < 10:
+            post, tweetId, followeeId, index = heapq.heappop(minHeap)
+            res.append(tweetId)
+            if index >= 0:
+                post, tweetId = self.tweets[followeeId][index]
+                heapq.heappush(minHeap, [post, tweetId, followeeId, index - 1])
+        return res
 
     def follow(self, followerId: int, followeeId: int) -> None:
         self.followMap[followerId].add(followeeId)
