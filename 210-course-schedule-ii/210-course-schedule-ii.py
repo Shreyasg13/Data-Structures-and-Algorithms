@@ -19,7 +19,7 @@ class Solution:
             
             cycle.remove(crs)
             taken.append(crs)
-            return True
+            
             
             
         for i in range(numCourses):
