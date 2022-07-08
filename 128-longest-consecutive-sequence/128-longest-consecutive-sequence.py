@@ -4,6 +4,8 @@ class Solution:
         ans=0
      
         for ele in A:
+            # if prev sequence doest exist
+            # Iternate till last element avilable in list
             if (ele-1) not in A:
                 last=ele+1
                 while last in A:
