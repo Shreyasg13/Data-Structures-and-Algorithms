@@ -7,9 +7,8 @@ class Solution:
         
         for i in range(len(s)-1,-1,-1):
             for word in wordDict:
-                if (len(word)+i)<=len(s) and s[i:i+len(word)] == word:
-                    Mark[i]=Mark[i+len(word)]
-                if Mark[i]:
+                if (len(word)+i)<=len(s) and s[i:i+len(word)] == word and Mark[i+len(word)]:
+                    Mark[i]=True
                     break
         
         return Mark[0]
