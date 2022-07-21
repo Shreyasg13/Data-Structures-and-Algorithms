@@ -1,7 +1,5 @@
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        # target=sum(nums)//2
-        # return False if sum(nums)%2==0 else self.dfs(nums,target,0)
         target=sum(nums)//2
         if sum(nums)%2==1:
             return False
@@ -15,10 +13,8 @@ class Solution:
                 new_dp.add(ele+nums[i])
             dp=new_dp
        
-        if target in dp:
-            return True
-        else:
-            return False
+        
+        return True if target in dp else False
                 
 #     def dfs(self,candidates,target,index):
         
