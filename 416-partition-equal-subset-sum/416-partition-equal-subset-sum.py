@@ -15,13 +15,3 @@ class Solution:
        
         
         return True if target in dp else False
-                
-#     def dfs(self,candidates,target,index):
-        
-#         if target < 0:
-#             return
-#         elif target==0:
-#             return True
-#         for i in range(index,len(candidates)):
-#             self.dfs(candidates,target-candidates[i],i+1)       
-#         return False
