@@ -5,9 +5,9 @@ class Solution:
         while r1 <= r2 :
             In_row=(r1+r2)//2
           # Selecting a row  
-            if matrix[In_row][0] > target :
+            if matrix[In_row][0] > target : #checking first elemnt of middle row
                 r2=In_row -1
-            elif matrix[In_row][-1] < target :
+            elif matrix[In_row][-1] < target : #checking last ele of middle row
                 r1=In_row + 1
             else:
                 break
