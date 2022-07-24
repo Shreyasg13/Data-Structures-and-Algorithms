@@ -1,8 +1,8 @@
 class Solution:
-	def Search(self, nums, target):
-		if len(nums) == 1 and nums[0] == target:
-			return 0
-		elif len(nums) == 1 and nums[0] != target:
+	def Found(self, nums, target):
+		# if len(nums) == 1 and nums[0] == target:
+		# 	return 0
+		if len(nums) == 1 and nums[0] != target:
 			return -1
     
 		l,r = 0,len(nums)-1
@@ -18,13 +18,15 @@ class Solution:
 		return (-1)
 
 	def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-		r = len(matrix)
-		for i in range(r):
-			if self.Search(matrix[i], target) == -1:
+		row = len(matrix)
+        # Searching element in each row
+		for i in range(row):
+            # if target not found
+			if self.Found(matrix[i], target) == -1:
 				continue
 			else:
 				break
  
-		if self.Search(matrix[i], target) != -1:
+		if self.Found(matrix[i], target) != -1:
 			return True
 		return False
