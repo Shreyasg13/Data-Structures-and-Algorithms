@@ -10,6 +10,7 @@ class Solution:
                 matrix[r][c],matrix[c][r]=matrix[c][r],matrix[r][c]
                 
             # reversing the rows
+        for r in range(rows):
             matrix[r]=matrix[r][::-1]
                 
        
