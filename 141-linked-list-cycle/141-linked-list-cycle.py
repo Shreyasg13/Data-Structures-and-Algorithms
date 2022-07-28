@@ -9,7 +9,7 @@ class Solution:
         
         fast,slow=head,head
         
-        while fast and slow and fast.next:
+        while fast and fast.next:
             fast=fast.next.next
             slow=slow.next
             
