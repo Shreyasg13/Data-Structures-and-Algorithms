@@ -9,7 +9,7 @@ class Solution:
             count[s[r]]=1+count.get(s[r],0)
             maxf=max(maxf,count[s[r]])
           
-            while r-l+1 - maxf > k:    
+            if r-l+1 - maxf > k:    
                 count[s[l]]-=1
                 l+=1
             
