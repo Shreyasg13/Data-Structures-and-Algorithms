@@ -4,7 +4,7 @@ class Solution:
         left=0
         Set=set()
         res=0
-        
+        # iterrating right pointer
         for char in s:
            
             # keep going to next char till duplicate not found
