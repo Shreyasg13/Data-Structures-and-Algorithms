@@ -4,24 +4,15 @@ class Solution:
         l=0
         string=set()
         res=0
+        # iterrating right pointer
         for r in range(len(s)):
+           
+            # keep going to next char till duplicate not found
             while s[r] in string:
                 string.remove(s[l])
                 l+=1
+            # keep adding each character of right pointer
             string.add(s[r])
-            res=max(res,r-l+1)
+            # print(string)
+            res=max(res,len(string))
         return res
-        
-        
-        
-#         charSet = set()
-#         l = 0
-#         res = 0
-        
-#         for r in range(len(s)):
-#             while s[r] in charSet:
-#                 charSet.remove(s[l])
-#                 l += 1
-#             charSet.add(s[r])
-#             res = max(res, r - l + 1)
-#         return res
