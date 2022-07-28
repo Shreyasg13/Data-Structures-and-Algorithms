@@ -1,18 +1,18 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         
-        l=0
-        string=set()
+        left=0
+        Set=set()
         res=0
         # iterrating right pointer
-        for r in range(len(s)):
+        for char in s:
            
             # keep going to next char till duplicate not found
-            while s[r] in string:
-                string.remove(s[l])
-                l+=1
+            while char in Set:
+                Set.remove(s[left])
+                left+=1
             # keep adding each character of right pointer
-            string.add(s[r])
+            Set.add(char)
             # print(string)
-            res=max(res,len(string))
+            res=max(res,len(Set))
         return res
