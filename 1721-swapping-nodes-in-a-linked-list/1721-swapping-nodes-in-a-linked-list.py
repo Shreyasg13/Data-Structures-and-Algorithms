@@ -6,18 +6,20 @@
 class Solution:
     def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         l,r=head,head
-        # setting up pointer on n from beg and n from end
+        
+        # setting left pointer on kth node from begining
         for i in range(k-1):
             r=r.next
         
         first=r
         
+        # setting right pointer on kth node from end
         while r.next:
             l,r = l.next,r.next
         
         second=l
-        print(first.val,second.val)
         
+        # Swap Node Values
         first.val,second.val=second.val,first.val
 
         
