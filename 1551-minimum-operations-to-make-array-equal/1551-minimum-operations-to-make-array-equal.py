@@ -5,7 +5,7 @@ class Solution:
         # 1 3 5 7 9 odd case
         
         arr=[0]*n
-        for i in range(n):
+        for i in range(n//2+1):
             arr[i]= (2 * i) + 1
         
           
