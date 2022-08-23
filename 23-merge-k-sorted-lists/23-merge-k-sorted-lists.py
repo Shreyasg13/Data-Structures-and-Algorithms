@@ -4,6 +4,11 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+
+    """                
+Time Complexity: O(n·log(m)) where n is the total number of elements and m is the number of lists
+Space Complexity: O(n)              
+"""        
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         dummy=curr=ListNode(0)
         heap=[]
@@ -25,6 +30,3 @@ class Solution:
                 lists[i]=lists[i].next
             # print(heap)
         return dummy.next
-                
-                
-        
