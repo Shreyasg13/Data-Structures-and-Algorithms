@@ -18,12 +18,11 @@ class Solution:
                 elif sum < 0:
                     l+=1
                 else:
-                    triplet=[nums[i],nums[l],nums[r]]
-                    if triplet not in res:
-                        res.append(triplet)
+                    res.append([nums[i],nums[l],nums[r]])
+                    l+=1
+                    while l < r and nums[l]==nums[l-1]:
                         l+=1
-                        while l < r and nums[l]==nums[l-1]:
-                            l+=1
+                            
                     
         return res
     
