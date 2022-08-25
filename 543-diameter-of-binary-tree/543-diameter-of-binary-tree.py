@@ -5,20 +5,39 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        self.res=0
         
-    
-        def Depth(root):
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        self.diameter=0
+        
+        def DFS(root):
             if not root:
                 return 0
-            l=Depth(root.left) 
-            r=Depth(root.right)
-            self.res=max(l+r,self.res)
+            l,r=DFS(root.left),DFS(root.right)
+            self.diameter=max(l+r,self.diameter)
             return 1+max(l,r)
         
-        Depth(root)
-        return self.res
+        DFS(root)
+        return self.diameter
+        
+        
+        
+        
+        
+        
+        
+#         self.res=0
+        
+    
+#         def Depth(root):
+#             if not root:
+#                 return 0
+#             l=Depth(root.left) 
+#             r=Depth(root.right)
+#             self.res=max(l+r,self.res)
+#             return 1+max(l,r)
+        
+#         Depth(root)
+#         return self.res
         
         
     
