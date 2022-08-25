@@ -20,4 +20,7 @@ class Solution:
                 
             max_len=max(max_len,pos)
         return max_len
-        
+        """
+        Time(C): O(n)
+        Space(C):)(1)
+        """
