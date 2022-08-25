@@ -14,5 +14,6 @@ class Solution:
         
         if not root:
             return True
-        return abs(height(root.left)-height(root.right)) < 2 and self.isBalanced(root.left) and self.isBalanced(root.right)
+        return (abs(height(root.left)-height(root.right)) < 2 and
+                self.isBalanced(root.left) and self.isBalanced(root.right))
         
