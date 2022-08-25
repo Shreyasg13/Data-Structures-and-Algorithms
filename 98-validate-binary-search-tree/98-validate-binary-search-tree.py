@@ -6,14 +6,18 @@
 #         self.right = right
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        
-        def check(root,left,right):
-            
+       
+        def check(root,low,high):
+            # if it reaches end of the node i.e. it is valid BST
             if not root:
                 return True
-            if left < root.val < right:
-                return check(root.right,root.val,right) and check(root.left,left,root.val)
+            # if node is in  valid range keep checking for left and right child 
+            if low < root.val < high:
+                # node val < right < high
+                # low < left < node val
+                return check(root.right,root.val,high) and check(root.left,low,root.val)
             else :
+                # early rejection for invalid node
                 return False
         return check(root,float('-inf'),float('inf'))
-        
+                
