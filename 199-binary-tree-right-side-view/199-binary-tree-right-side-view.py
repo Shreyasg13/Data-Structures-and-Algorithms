@@ -6,40 +6,19 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        res, stack= [], [root] 
-        if not root:
-            return []
+        res=[]
+        stack=[]
+        if root:
+            stack.append(root)
         while stack:
-            res.append(stack[-1].val) # appending right most value
-            level, stack = stack, []
-            for node in level: # build the next level
-                if node.left: stack.append(node.left)
-                if node.right: stack.append(node.right)
+            level=[]
+            for i in range(len(stack)):
+                node=stack.pop(0)
+                level.append(node.val)
+                
+                if node.right   :  stack.append(node.right)
+                if node.left    :  stack.append(node.left)
+            
+            res.append(level[0])
+            
         return res
-                
-            
-#          ## RC ##
-#         ## APPROACH : BFS ##
-        
-# 		## TIME COMPLEXITY : O(N) ##
-# 		## SPACE COMPLEXITY : O(D)##    (diameter)
-
-#         if(not root): return []
-#         queue = deque([root])
-#         res = []
-#         while (queue): 
-#             curr_level = []
-#             size = len(queue)
-#             for i in range(size):
-#                 curr = queue.popleft()
-#                 if i == size - 1:
-#                     res.append(curr.val)
-#                 if (curr.left): 
-#                     queue.append(curr.left)
-#                 if (curr.right): 
-#                     queue.append(curr.right)
-#         return res         
-            
-         
-                
-   
