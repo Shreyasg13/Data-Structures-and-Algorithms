@@ -7,12 +7,12 @@ class Solution:
             if tmp > 0:
                 count+=tmp
                 
-            # check even pallindrome
+            # check odd pallindrome
             tmp=self.Num_of_pallindromes(s,i,i)
             if tmp > 0:
                 count+=tmp
         return count
-    # Calculating pallindromes at index i
+        # Calculating pallindromes at index i
     def Num_of_pallindromes(self,s,l,r):
         n=0
         while l>=0 and r <len(s) and s[l]==s[r]:
