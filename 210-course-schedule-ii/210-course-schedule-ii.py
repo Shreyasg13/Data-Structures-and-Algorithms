@@ -1,31 +1,30 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
-        pre={i:[] for i in range(numCourses)}
+        # Create an adjuscency list
+        pre=[[] for _ in range(numCourses)]
+        for x,y in prerequisites: pre[x].append(y)
         
-        for x,y in prerequisites:
-            pre[x].append(y)
-        cycle,taken=set(),[]
-        def CanTake(crs):
+        Visited,Taken=set(),[]
+        
+        def DFS(crs):
             
-            if crs in cycle:
+            if crs in  Visited:
                 return False
-            if crs in taken:
-                return True  
+            if crs in Taken :
+                return True
+           # add crs then check its all prereqs and remove that course 
+            Visited.add(crs)
             
-            cycle.add(crs)
-            for ele in pre[crs]:
-                if CanTake(ele)==False:
-                    return False    
+            for p in pre[crs]:
+                if DFS(p)==False:
+                    return False
             
-            cycle.remove(crs)
-            taken.append(crs)
-            
-            
+            Visited.remove(crs)
+            Taken.append(crs)
             
         for i in range(numCourses):
-            if CanTake(i)==False:
+            if DFS(i)==False:
                 return []
-                
-        return taken
-                
-        
+        return Taken
+            
+            
