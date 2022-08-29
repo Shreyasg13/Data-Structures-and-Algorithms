@@ -8,26 +8,20 @@ class Node:
 
 class Solution:
     def cloneGraph(self, node: 'Node') -> 'Node':
-        New={}
+        # create a map of node
+        Map={}
         
-        def dfs(node):
-            if node in New:
-                return New[node]
-            
+        def DFS(node):
+            # if node found in map then return a node
+            if node in Map:
+                return Map[node]
+            # create a deep copy and push it in a map 
             copy=Node(node.val)
-            New[node]=copy
-            
+            Map[node]=copy
+            # also append the neighbours of current node recursively
             for nei in node.neighbors:
-                copy.neighbors.append(dfs(nei))
+                copy.neighbors.append(DFS(nei))
+            
             return copy
-                
-        return dfs(node) if node else None
-                
-                
-                
             
-            
-        
-#     def dfs(node,path,res):
-        
-        
+        return DFS(node) if node else None
