@@ -6,6 +6,7 @@ class Solution:
             for coin in coins:
                 if i - coin >= 0:
                     dp[i] = min(dp[i], dp[i-coin] + 1)
+        print(dp)
         if dp[amount] == sys.maxsize:
             return -1
         return dp[amount]
