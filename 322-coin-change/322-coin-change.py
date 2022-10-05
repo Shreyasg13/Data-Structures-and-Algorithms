@@ -1,13 +1,18 @@
 class Solution:
-    def coinChange(self, coins: List[int], amount: int) -> int:
-        dp = [sys.maxsize for _ in range(amount+1)]
-        dp[0]=0
+    def coinChange(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
+        rs = [amount+1] * (amount+1)
+        rs[0] = 0
         for i in range(1, amount+1):
-            for coin in coins:
-                if i - coin >= 0:
-                    dp[i] = min(dp[i], dp[i-coin] + 1)
-        print(dp)
-        if dp[amount] == sys.maxsize:
+            for c in coins:
+                if i >= c:
+                    rs[i] = min(rs[i], rs[i-c] + 1)
+
+        if rs[amount] == amount+1:
             return -1
-        return dp[amount]
+        return rs[amount]
  
