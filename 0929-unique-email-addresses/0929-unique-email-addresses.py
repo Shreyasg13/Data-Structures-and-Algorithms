@@ -1,6 +1,8 @@
 class Solution:
     def numUniqueEmails(self, emails: List[str]) -> int:
         
+        
+        # function to filter local name
         def filter(str):
             res=""
             for c in str:
@@ -11,7 +13,10 @@ class Solution:
             return res
         
         container=set()
+        
+        # reform each mail and append it in an container
         for email in emails:
+            
             x=email.split('@')
             local_name=filter(x[0])
             domain_name=x[1]
