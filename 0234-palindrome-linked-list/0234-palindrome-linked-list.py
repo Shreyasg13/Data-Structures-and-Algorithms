@@ -11,8 +11,7 @@ class Solution:
         while sec and sec.next:
             
             fir=fir.next
-            sec=sec.next
-            sec=sec.next
+            sec=sec.next.next
             
         prev=None
         # reverse next half
