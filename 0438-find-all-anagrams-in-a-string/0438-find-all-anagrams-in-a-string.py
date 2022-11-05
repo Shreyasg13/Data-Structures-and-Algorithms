@@ -1,13 +1,18 @@
 class Solution:
+    # Time Complexity O(s)
+    # Space Complexity O(p)
+    
     def findAnagrams(self, s: str, p: str) -> List[int]:
         # 1. Early answer based on p2s length
         if len(s) < len(p):
             return []
+        
         hash_s,hash_p={},{}
         # 2. create two hashmaps of length p
         for i in range(len(p)):
             hash_s[s[i]] = 1 + hash_s.get(s[i],0)
             hash_p[p[i]] = 1 + hash_p.get(p[i],0)
+            
         # 3. declaring res 
         res=[0] if hash_s==hash_p else []
         
