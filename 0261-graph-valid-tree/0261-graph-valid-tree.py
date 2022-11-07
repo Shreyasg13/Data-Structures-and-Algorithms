@@ -11,13 +11,25 @@ class Solution:
             adj[y].append(x)
         
         visit=set()
-        def DFS(node):
+        stack=[0]
+        
+        while stack:
+            node=stack.pop()
             visit.add(node)
             
             for nei in adj[node]:
                 if nei not in visit:
-                    DFS(nei)
-           
-        DFS(0)
+                    stack.append(nei)
         return len(visit)==n
+            
+        
+#         def DFS(node):
+#             visit.add(node)
+            
+#             for nei in adj[node]:
+#                 if nei not in visit:
+#                     DFS(nei)
+           
+#         DFS(0)
+#         return len(visit)==n
             
