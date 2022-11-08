@@ -11,25 +11,28 @@ class Solution:
             adj[y].append(x)
         
         visit=set()
-        stack=[0]
         
-        while stack:
-            node=stack.pop()
-            visit.add(node)
-            
-            for nei in adj[node]:
-                if nei not in visit:
-                    stack.append(nei)
+        def dfs(i):
+            visit.add(i)
+            for neigh in adj[i]:
+                if neigh not in visit:
+                    dfs(neigh)
+        dfs(0)
+        
         return len(visit)==n
-            
         
-#         def DFS(node):
+        
+        
+    """ Iterative Solution"""
+#         stack=[0]
+#         while stack:
+#             node=stack.pop()
 #             visit.add(node)
             
 #             for nei in adj[node]:
 #                 if nei not in visit:
-#                     DFS(nei)
-           
-#         DFS(0)
+#                     stack.append(nei)
 #         return len(visit)==n
             
+        
+      
