@@ -1,7 +1,7 @@
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        
-        if len(edges) != n-1 :
+        # Early rejection in 
+        if len(edges)+1 != n :
             return False
         
         adj={i:[] for i in range(n)}
@@ -17,6 +17,7 @@ class Solution:
             for neigh in adj[i]:
                 if neigh not in visit:
                     dfs(neigh)
+                
         dfs(0)
         
         return len(visit)==n
